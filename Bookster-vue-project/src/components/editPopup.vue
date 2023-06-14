@@ -1,3 +1,9 @@
+<!--
+  Detta är det edit fönster som dycker 
+  upp när en admin trycker på edit knappen
+  här ska man kunna redigera en bok
+-->
+
 <script lang="ts">
 import { getBookQuantity, getBooks, getBookTitles, getBookAuthor } from '@/service/getBooksAPI';
 import { ref } from 'vue';

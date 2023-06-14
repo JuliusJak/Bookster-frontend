@@ -1,3 +1,13 @@
+<!--
+    Denna visar adminView books från wireframen
+
+    Den fungerar genom att använda Columns
+    som en komponent där man kan sätta in
+    data, data är gjort via de olika 
+    get funktionerna i script taggen
+    functionerna finns i service/getBooksAPI
+    
+-->
 <script setup lang="ts">
 import columns from './columns/columns.vue';
 import MainHeader from '../components/MainHeader.vue';

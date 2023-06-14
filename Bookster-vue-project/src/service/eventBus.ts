@@ -1,3 +1,7 @@
+/*
+  Jag använder den här event bussen för att 
+  kunna updatera andra komponenter när det beövs 
+*/
 import { ref, readonly } from 'vue';
 
 const searchQuery = ref('');

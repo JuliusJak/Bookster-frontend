@@ -1,3 +1,12 @@
+<!--
+    detta är vad man ser ifall man loggar 
+    in som gäst
+
+    Man kan inte göra något annat än att 
+    använda sök funktionen för att se 
+    vad som finns
+-->
+
 <script setup lang="ts">
 import columns from './columns/columns.vue';
 import MainHeader from '../components/MainHeader.vue';
@@ -22,9 +31,9 @@ const bookQuantity= await getBookQuantity('')
 
     <SearchBarSection class="searchbar-section"></SearchBarSection>
     <div class="columns">
-        <columns :head-title="'Book Title'" :book-title="bookTitles"></columns>
-        <columns :head-title="'Book Author'" :book-title="BookAuthor"></columns>
-        <columns :head-title="'Availability'" :book-title="bookQuantity"></columns>
+        <columns :head-title="'Book Title'" :content="bookTitles"></columns>
+        <columns :head-title="'Book Author'" :content="BookAuthor"></columns>
+        <columns :head-title="'Availability'" :content="bookQuantity"></columns>
     </div>
 </template>
 <style scoped>

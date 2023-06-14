@@ -1,3 +1,12 @@
+<!--
+    Här authetiseras man genom att ange sitt
+    användar namn och lösenord
+
+    ifall man inte har ett konto finns det en 
+    länk till RegisterNewAccount.vue
+    där man kan regestrera ett nytt konto
+
+-->
 <template>
     <div class="container">
         <div class="login-symbol">

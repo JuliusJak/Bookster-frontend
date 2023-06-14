@@ -1,3 +1,15 @@
+<!--
+    här visas Action kolumnen från wireframen
+    i admin.
+    Den ska visa olika saker beroende på ifall
+    man är i books eller Users mode
+
+    I books mode ska man kunna redigera
+    och radera böckers
+
+    I Users mode ska man kunna promota
+    eller radera användares konton
+-->
 <script setup lang="ts">
 import { defineProps, ref, onMounted, watch } from 'vue';
 import { getBookQuantity } from '@/service/getBooksAPI';

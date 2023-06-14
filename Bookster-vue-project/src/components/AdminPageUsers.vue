@@ -1,3 +1,8 @@
+<!--
+    samma som AdminPageBooks men 
+    för users iställer för bäcker
+-->
+
 <script setup lang="ts">
 import MainHeader from './MainHeader.vue';
 import SearchBarSection from './SearchBarSection.vue';

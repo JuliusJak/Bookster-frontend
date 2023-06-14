@@ -4,10 +4,6 @@
     browsing as admin <username>
     browsing as user <username>
 
-    ############################
-    NOTE TO SELF
-    GÖR button och show-user dynamisk
-
  -->
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'

@@ -1,3 +1,7 @@
+/*
+Här gör jag alla api requests med axios
+
+*/
 import axios from 'axios';
 import { getSearchQuery } from '@/service/eventBus';
 

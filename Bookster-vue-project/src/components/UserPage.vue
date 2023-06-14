@@ -1,6 +1,13 @@
+<!--
+    Detta är vad man ser ifall man loggar 
+    in som en användare
+
+    man kan använda sökfunktionen som en gäst
+    men man kan även beställa böcker
+-->
 <script setup lang="ts">
 import MainHeader from '../components/MainHeader.vue';
-import SearchBarSection from './searchBarSection.vue';
+import SearchBarSection from '@/components/SearchBarSection.vue';
 
 
 </script>

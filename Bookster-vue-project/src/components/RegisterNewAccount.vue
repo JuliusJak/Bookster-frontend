@@ -1,3 +1,11 @@
+<!--
+    Här kan man skapa ett nytt konto
+
+    ifall man redan har ett konto finns det en 
+    länk till signInPage.vue där man kan logga
+    in om man redan har ett konto
+-->
+
 <template>
     <div class="container">
         <div class="login-symbol">

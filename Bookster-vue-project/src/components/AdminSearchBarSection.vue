@@ -1,3 +1,13 @@
+<!-- 
+    Här finns tre knappar
+    add new book, books och users
+
+    add new books är till för att läga
+    till nya böcker och book/users
+    används för att byra mellan
+    books och users view för admins
+-->
+
 <script setup lang="ts">
 
 </script>

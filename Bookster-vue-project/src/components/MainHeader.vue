@@ -1,3 +1,10 @@
+<!--
+  här har vi en kompnent som används som header
+  över hela projectet. Den har en titel
+  och en sign-in/out knapp samt så visar den 
+  vem man är inloggad som
+-->
+
 <script setup lang="ts">
 import { defineProps, withDefaults } from 'vue';
 import UserHeaderDisplayed from '@/components/UserHeaderDisplayed.vue';

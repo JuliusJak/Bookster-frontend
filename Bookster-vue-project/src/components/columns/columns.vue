@@ -1,3 +1,13 @@
+<!-- 
+  Meningen med Columns är att bygga en grund
+  som är till de columner so visas wiredramen
+  userview, guestView och admin view
+  
+  Den skapar lika många <div> som det behövs
+  sen fylls det i data från andra komponenter
+
+
+-->
 <script setup lang="ts">
 import Order from './Order.vue';
 import Action from './Action.vue';

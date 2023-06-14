@@ -1,3 +1,9 @@
+<!--
+  I order så väljer kan en admin eller 
+  användare välja hur många exemplar av 
+  en bok de vill beställa
+-->
+
 <script setup lang="ts">
 
 import { ref, watch } from 'vue';

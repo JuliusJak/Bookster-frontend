@@ -1,9 +1,12 @@
 <!--
-    search bar section
-    Includes
-    *Search bar
-    *add new book (if admin)
-    *view books or user (id admin)
+    search bar har en searchbar och 
+    adminSearchBarSection ifall användaren
+    är en admin.
+    
+    Här tas det värde från <input> och
+    sedan skcikas det viadere till de 
+    komponenter som behöver det 
+    Informationen skcikas med en eventBus
 
 
 -->

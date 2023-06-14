@@ -1,3 +1,8 @@
+/*
+  Detta är routerm som används för att 
+  byta vilka komponenter som ska användas
+  vid rätt URL/path
+*/
 import { createRouter, createWebHistory } from 'vue-router'
 import SignInPage from '../components/SignInPage.vue'
 import RegisterNewAccount from '../components/RegisterNewAccount.vue'
