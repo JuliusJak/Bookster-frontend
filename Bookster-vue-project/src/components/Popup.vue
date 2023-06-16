@@ -68,9 +68,9 @@ export default {
     <template v-if="mode === 'edit'">
       <EditBook
         @close="closePopup"
-        :book-title="bookTitles[currentBookId]"
-        :book-author="bookAuthor[currentBookId]"
-        :book-quantity="bookQuantity[currentBookId]"
+        :previous-book-title="bookTitles[currentBookId]"
+        :previous-book-author="bookAuthor[currentBookId]"
+        :previous-book-quantity="bookQuantity[currentBookId]"
       ></EditBook>
     </template>
     <template v-else-if="mode === 'add'">

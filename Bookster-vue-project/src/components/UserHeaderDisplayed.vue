@@ -11,6 +11,9 @@ import { RouterLink, RouterView } from 'vue-router'
 defineProps<{
   user: string
 }>()
+function signOut(){
+  localStorage.removeItem('token')
+}
 </script>
 <template>
     <header>
@@ -22,7 +25,8 @@ defineProps<{
         v-slot="{ navigate }">
 
             <button class="sign-in-out" 
-            @click="navigate"
+            @mousedown="signOut"
+            @mouseup="navigate"
             role="link"
             >Sign-out
         </button>

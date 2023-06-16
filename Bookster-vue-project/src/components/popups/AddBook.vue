@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts">
+import router from '@/router';
 import { addBook } from '@/service/adminService';
 export default {
   data() {
@@ -49,17 +50,14 @@ export default {
 
       addBook(newBook)
         .then(() => {
-          // Book added successfully
           console.log('Book added:', newBook);
-          this.closePopup(); // Optionally, close the popup after saving the book
-          window.location.reload(); // Reload the page
-
+          this.closePopup(); 
         })
         .catch(error => {
-          // Error adding book
           console.error('Error adding book:', error);
         });
     },
+    
   },
 };
 </script>

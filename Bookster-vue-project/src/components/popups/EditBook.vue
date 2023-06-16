@@ -7,45 +7,70 @@
         </div>
   
         <div class="input-section">
-          <h2>Book Title {{ bookTitle }}</h2>
-          <input type="text" placeholder="Input new title..." />
+          <h2>Book Title {{ previousBookTitle }}</h2>
+          <input v-model="newTitle" type="text" placeholder="Input new title..." />
         </div>
         <div class="input-section">
-          <h2>Author {{ bookAuthor }}</h2>
-          <input type="text" placeholder="Input new author..." />
+          <h2>Author {{ previousBookAuthor }}</h2>
+          <input v-model="newAuthor" type="text" placeholder="Input new author..." />
         </div>
         <div class="input-section">
-          <h2>Quantity {{ bookQuantity }}</h2>
-          <input type="number" placeholder="Input new quantity..." />
+          <h2>Quantity {{ previousBookQuantity }}</h2>
+          <input v-model="newQuantity" type="number" placeholder="Input new quantity..." />
         </div>
         <div class="button-section">
           <button @click="closePopup">Cancel</button>
-          <button>Save</button>
+          <button @click="saveBook">Save</button>
         </div>
       </div>
     </div>
   </template>
   
   <script lang="ts">
+  import { editBook } from '@/service/adminService';
   export default {
     props: {
-      bookTitle: {
+      previousBookTitle: {
         type: String,
         required: true,
       },
-      bookAuthor: {
+      previousBookAuthor: {
         type: String,
         required: true,
       },
-      bookQuantity: {
+      previousBookQuantity: {
         type: Number,
         required: true,
       },
     },
+    data() {
+    return {
+      newTitle: '',
+      newAuthor: '',
+      newQuantity: '',
+    };
+  },
     methods: {
       closePopup() {
         this.$emit('close');
       },
+      saveBook() {
+      const newBook = {
+        title: String(this.newTitle),
+        author: String(this.newAuthor),
+        quantity: String(this.newQuantity),
+      };
+      const previousBook = this.previousBookTitle;
+
+      editBook(previousBook, newBook)
+        .then(() => {
+          console.log('Book edited:', previousBook, ' => ', newBook);
+          this.closePopup(); 
+        })
+        .catch(error => {
+          console.error('Error adding book:', error);
+        });
+    },
     },
   };
   </script>
