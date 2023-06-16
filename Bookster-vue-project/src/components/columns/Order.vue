@@ -26,9 +26,6 @@ function reset() {
   counter.value = 0;
 }
 
-watch(counter, (newValue) => {
-  //console.log('Counter updated:', newValue);
-});
 
 </script>
 <script lang="ts">
@@ -66,7 +63,7 @@ export default {
       };
 
       const user = localStorage.getItem('user')
-      const existingBooks = localStorage.getItem(`${user}-books`);
+      const existingBooks: string | null = localStorage.getItem(`${user}-books`);
       let books = [];
 
       if (existingBooks) {

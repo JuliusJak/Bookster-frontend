@@ -45,11 +45,6 @@ const router = createRouter({
       name: 'userpage',
       component: UserPage
     },
-    {
-      path: '/1',
-      name: 'UserHeaderDisplayed',
-      component: UserHeaderDisplayed
-    },
   ]
 })
 

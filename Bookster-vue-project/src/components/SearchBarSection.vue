@@ -11,13 +11,13 @@
 
 -->
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import AdminSearchBarSection from './AdminSearchBarSection.vue';
 import { setSearchQuery } from '../service/eventBus';
 import { searchBooks } from '../service/getBooksAPI';
 import { watch } from 'vue';
 
-const inputValue = ref('');
+const inputValue: Ref<string> = ref('');
 
 function updateSearchQuery() {
   setSearchQuery(inputValue.value);
@@ -26,7 +26,7 @@ function clearSearch() {
   inputValue.value= ''
 }
 function blurInput() {
-  const inputElement = document.querySelector('input');
+  const inputElement: HTMLInputElement | null = document.querySelector('input');
   if (inputElement) {
     inputElement.blur();
   }

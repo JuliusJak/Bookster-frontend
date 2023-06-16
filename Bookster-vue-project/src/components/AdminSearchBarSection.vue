@@ -10,10 +10,10 @@
 
 <script setup lang="ts">
 import Popup from './Popup.vue'
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 
-const showPopup = ref(false);
-const currentBookId = ref<number>(0); // Initialize with a default value
+const showPopup: Ref<boolean> = ref(false);
+const currentBookId: Ref<number> = ref<number>(0);
 
 
 

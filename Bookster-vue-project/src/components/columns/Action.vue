@@ -12,7 +12,7 @@
     
 -->
 <script lang="ts">
-import { defineProps, ref, onMounted, watch } from 'vue';
+import { defineProps, ref, onMounted, watch, type Ref } from 'vue';
 import { getBookQuantity } from '@/service/getBooksAPI';
 import { getSearchQuery } from '@/service/eventBus';
 import Popup from '../Popup.vue';
@@ -33,13 +33,9 @@ export default {
     Popup
   },
   setup(props) {
-    const searchQuery = getSearchQuery();
-    const books = ref<Book[]>([]);
-    const counts = ref<number[]>([]);
-    const newIndex = ref<number[]>([]);
-    const showPopup = ref(false);
-    const currentBookId = ref(props.bookId);
-    const popupMode = ref('');
+    const showPopup: Ref<boolean> = ref(false);
+    const currentBookId: Ref<number> = ref(props.bookId);
+    const popupMode: Ref<string> = ref('');
 
     const openPopup = (mode: string) => {
       // Handle opening the popup for the specific book

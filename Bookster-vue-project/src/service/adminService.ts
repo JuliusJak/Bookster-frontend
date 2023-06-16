@@ -1,7 +1,11 @@
 import axios from 'axios';
-
-export async function addBook(newBook: any): Promise<void> {
-  const token = localStorage.getItem("token");
+interface newBook {
+  title: string;
+  author: string;
+  quantity: number;
+}
+export async function addBook(newBook: newBook): Promise<void> {
+  const token: string | null = localStorage.getItem("token");
 
   try {
     console.log(newBook.title)
@@ -19,7 +23,7 @@ export async function addBook(newBook: any): Promise<void> {
   }
 }
 export async function deleteBook(bookTitle: any): Promise<void> {
-  const token = localStorage.getItem("token");
+  const token: string | null = localStorage.getItem("token");
   try {
     const response = await axios.delete('http://localhost:3000/admin/books', {
       headers: {
@@ -35,8 +39,8 @@ export async function deleteBook(bookTitle: any): Promise<void> {
     console.error('Error deleting book:', error);
   }
 }
-export async function editBook(previous: any, current: any): Promise<void> {
-  const token = localStorage.getItem("token");
+export async function editBook(previous: string, current: newBook): Promise<void> {
+  const token: string | null = localStorage.getItem("token");
 
   try {
     const response = await axios.put(

@@ -29,7 +29,7 @@ export default {
       };
       signIn(payload)
       console.log(this.username)
-      if (this.username === 'Bob' || this.username === 'Greta'){
+      if (this.username === 'Bob' || this.username ==='Greta'){
         this.$router.push('/admin/books');
       } 
       else {

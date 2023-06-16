@@ -11,7 +11,7 @@ import SearchBarSection from '@/components/SearchBarSection.vue';
 import columns from './columns/columns.vue';
 import { getSearchQuery } from '@/service/eventBus';
 import { getBookTitles, getBookAuthor, getBookQuantity } from '@/service/getBooksAPI';
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, type Ref } from 'vue';
 
 export default {
   components: {
@@ -20,13 +20,13 @@ export default {
     SearchBarSection,
   },
   setup() {
-    const bookTitles = ref([]);
-    const bookAuthor = ref([]);
-    const bookQuantity = ref([]);
+    const bookTitles: Ref<never[]> = ref([]);
+    const bookAuthor: Ref<never[]> = ref([]);
+    const bookQuantity: Ref<never[]> = ref([]);
     const userName: string | null = localStorage.getItem('user');
 
 
-    const searchQuery = getSearchQuery();
+    const searchQuery: Readonly<Ref<string>> = getSearchQuery();
 
     watch(searchQuery, async (newQuery) => {
       bookTitles.value = await getBookTitles(newQuery);
@@ -35,7 +35,7 @@ export default {
     });
 
     onMounted(async () => {
-      const initialQuery = searchQuery.value;
+      const initialQuery: string = searchQuery.value;
       bookTitles.value = await getBookTitles(initialQuery);
       bookAuthor.value = await getBookAuthor(initialQuery);
       bookQuantity.value = await getBookQuantity(initialQuery);

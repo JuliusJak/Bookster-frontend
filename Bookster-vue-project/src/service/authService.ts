@@ -1,7 +1,7 @@
 import router from "@/router";
 import axios from "axios";
 
-export async function signIn(payload:any) {
+export async function signIn(payload:string) {
     axios
     .post('http://localhost:3000/auth/login', payload)
     .then(response => {
@@ -17,7 +17,7 @@ export async function signIn(payload:any) {
       localStorage.removeItem('user')
     });
 }
-export async function registerNewUser(payload:any) {
+export async function registerNewUser(payload:string) {
     axios
     .post('http://localhost:3000/auth/register', payload)
     .then(response => {

@@ -14,7 +14,7 @@ import MainHeader from '../components/MainHeader.vue';
 import SearchBarSection from '@/components/SearchBarSection.vue';
 import AdminSearchBarSection from './AdminSearchBarSection.vue';
 import { getSearchQuery } from '@/service/eventBus';
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, type Ref } from 'vue';
 import { getBookTitles, getBookAuthor, getBookQuantity } from '@/service/getBooksAPI';
 
 export default {
@@ -25,11 +25,11 @@ export default {
     AdminSearchBarSection,
   },
   setup() {
-    const bookTitles = ref([]);
-    const bookAuthor = ref([]);
-    const bookQuantity = ref([]);
+    const bookTitles: Ref<never[]> = ref([]);
+    const bookAuthor: Ref<never[]> = ref([]);
+    const bookQuantity: Ref<never[]> = ref([]);
 
-    const searchQuery = getSearchQuery();
+    const searchQuery: Readonly<Ref<string>> = getSearchQuery();
 
     watch(searchQuery, async (newQuery) => {
       bookTitles.value = await getBookTitles(newQuery);

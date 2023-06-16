@@ -2,11 +2,11 @@
   Jag använder den här event bussen för att 
   kunna updatera andra komponenter när det beövs 
 */
-import { ref, readonly } from 'vue';
+import { ref, readonly, type Ref } from 'vue';
 
-const searchQuery = ref('');
+const searchQuery: Ref<string> = ref('');
 
-export function setSearchQuery(query:any) {
+export function setSearchQuery(query:string): void {
   searchQuery.value = query;
 }
 

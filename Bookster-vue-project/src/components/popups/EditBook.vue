@@ -61,7 +61,7 @@
           quantity: this.newQuantity ? String(this.newQuantity) : String(this.previousBookQuantity),
         };
 
-      const previousBook = this.previousBookTitle;
+      const previousBook: string = this.previousBookTitle;
 
       editBook(previousBook, newBook)
         .then(() => {

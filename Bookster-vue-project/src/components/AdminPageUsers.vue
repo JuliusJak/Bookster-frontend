@@ -9,7 +9,7 @@ import MainHeader from '../components/MainHeader.vue';
 import SearchBarSection from '@/components/SearchBarSection.vue';
 import AdminSearchBarSection from './AdminSearchBarSection.vue';
 import { getSearchQuery } from '@/service/eventBus';
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, type Ref } from 'vue';
 import { getBookTitles, getBookAuthor, getBookQuantity } from '@/service/getBooksAPI';
 import { getUsers, getUsername, getRoles, getpurchases } from '@/service/getUsersAPI';
 
@@ -21,12 +21,11 @@ export default {
     AdminSearchBarSection,
   },
   setup() {
-    const username = ref([]);
-    const role = ref([]);
-    const purchases = ref([]); // Define 'purchases' as a ref with an initial value of 0
+    const username: Ref<never[]> = ref([]);
+    const role: Ref<never[]> = ref([]);
+    const purchases: Ref<never[]> = ref([]); 
 
-    const usernameArray = ref ([]);
-    const searchQuery = getSearchQuery();
+    const searchQuery: Readonly<Ref<string>> = getSearchQuery();
 
     watch(searchQuery, async (newQuery) => {
         username.value = await getUsername();
@@ -35,7 +34,6 @@ export default {
     });
 
     onMounted(async () => {
-        const initialQuery = searchQuery.value;
         username.value = await getUsername();
         role.value = await getRoles();
         purchases.value = await getpurchases('Bob');
@@ -58,7 +56,6 @@ export default {
         <columns :head-title="'Users'" :content="username"></columns>
         <columns :head-title="'Role'" :content="role"></columns>
         <columns :head-title="'Purchases'" :content="purchases"></columns>
-        <columns :head-title="'Order'" :content="''"></columns>
         <columns :head-title="'Action'" :content="''"></columns>
     </div>
 

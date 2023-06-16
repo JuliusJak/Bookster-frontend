@@ -43,7 +43,7 @@ export default defineComponent({
     this.books = await searchBooks(initialSearchQuery);
 
     watchEffect(() => {
-      const newSearchQuery = getSearchQuery().value;
+      const newSearchQuery: string = getSearchQuery().value;
       this.updateBooks(newSearchQuery);
     });
   },
