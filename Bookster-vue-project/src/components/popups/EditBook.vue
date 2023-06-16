@@ -55,11 +55,12 @@
         this.$emit('close');
       },
       saveBook() {
-      const newBook = {
-        title: String(this.newTitle),
-        author: String(this.newAuthor),
-        quantity: String(this.newQuantity),
-      };
+        const newBook = {
+          title: this.newTitle ? String(this.newTitle) : String(this.previousBookTitle),
+          author: this.newAuthor ? String(this.newAuthor) : String(this.previousBookAuthor),
+          quantity: this.newQuantity ? String(this.newQuantity) : String(this.previousBookQuantity),
+        };
+
       const previousBook = this.previousBookTitle;
 
       editBook(previousBook, newBook)

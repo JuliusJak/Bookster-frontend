@@ -17,10 +17,9 @@ import columns from './columns/columns.vue';
     </header>
         <SearchBarSection class="searchbar-section"></SearchBarSection>
     <div class="columns">
-        <columns :head-title="'Book Title'" :content="''"></columns>
-        <columns :head-title="'Book Author'" :content="''"></columns>
-        <columns :head-title="'Availability'" :content="''"></columns>
-        <columns :head-title="'Order'" :content="''"></columns>
+        <columns :head-title="'Username'" :content="''"></columns>
+        <columns :head-title="'Role'" :content="''"></columns>
+        <columns :head-title="'Purchases'" :content="''"></columns>
         <columns :head-title="'Action'" :content="''"></columns>
     </div>
 
