@@ -28,8 +28,6 @@ export default {
     const bookTitles = ref([]);
     const bookAuthor = ref([]);
     const bookQuantity = ref([]);
-    const userName: string | null = localStorage.getItem('user');
-
 
     const searchQuery = getSearchQuery();
 
@@ -50,7 +48,6 @@ export default {
       bookTitles,
       bookAuthor,
       bookQuantity,
-      userName,
     };
   },
 };

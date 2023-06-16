@@ -65,8 +65,8 @@ export default {
         quantity: String(this.quantity),
       };
 
-      // Get the existing books from localStorage
-      const existingBooks = localStorage.getItem('books');
+      const user = localStorage.getItem('user')
+      const existingBooks = localStorage.getItem(`${user}-books`);
       let books = [];
 
       if (existingBooks) {
@@ -77,7 +77,7 @@ export default {
         books.push(newBook);
       }
       
-      localStorage.setItem('books', JSON.stringify(books));
+      localStorage.setItem(`${user}-books`, JSON.stringify(books));
 
       //localStorage.removeItem('books')
     },
