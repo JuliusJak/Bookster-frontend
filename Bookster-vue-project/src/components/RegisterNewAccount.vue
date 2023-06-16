@@ -4,9 +4,12 @@
     ifall man redan har ett konto finns det en 
     länk till signInPage.vue där man kan logga
     in om man redan har ett konto
+
+
 -->
 <script lang="ts">
 import axios from 'axios';
+import { registerNewUser } from '@/service/authService';
 
 export default {
   data() {
@@ -21,21 +24,11 @@ export default {
         username: this.username,
         password: this.password
       };
+      registerNewUser(payload)
+      this.$router.push('/user');
 
-      axios
-        .post('http://localhost:3000/auth/register', payload)
-        .then(response => {
-          console.log('Registration successful'); // Log success message to console
-          // Perform any additional actions, such as redirecting to the login page
-          this.$router.push('/user'); // Redirect to /signin
-        })
-        .catch(error => {
-          console.error(error);
-          console.log('Registration failed'); // Log error message to console
-        });
-    }
   }
-};
+}};
 </script>
 
 

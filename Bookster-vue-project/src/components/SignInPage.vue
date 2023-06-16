@@ -6,12 +6,13 @@
     länk till RegisterNewAccount.vue
     där man kan regestrera ett nytt konto
 
+
 -->
 
 
 
 <script lang="ts">
-import axios from 'axios';
+import { signIn } from '@/service/authService';
 
 export default {
   data() {
@@ -26,26 +27,10 @@ export default {
         username: this.username,
         password: this.password
       };
-
-      axios
-        .post('http://localhost:3000/auth/login', payload)
-        .then(response => {
-          localStorage.clear
-          const accessToken = response.data.accessToken;
-
-          // Store the accessToken in local storage or Vuex store for future authenticated requests
-          localStorage.setItem('token', accessToken);
-
-          // Redirect the user to the desired page or perform any other necessary actions
-          this.$router.push('/admin/books'); // Redirect to /admin/books
-        })
-        .catch(error => {
-          console.error(error);
-          console.log('Authentication failed'); // Log error message to console
-        });
-    }
+      signIn(payload)
+      this.$router.push('/admin/books');
   }
-};
+}};
 </script>
 
 
