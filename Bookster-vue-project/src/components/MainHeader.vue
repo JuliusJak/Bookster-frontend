@@ -9,17 +9,13 @@
 import { defineProps, withDefaults } from 'vue';
 import UserHeaderDisplayed from '@/components/UserHeaderDisplayed.vue';
 
-const props = defineProps<{
-  username: string | null;
-}>();
 
-const user: string | null = props.username;
 </script>
 
 <template>
   <header>
     <h1 class="centered">Bookster-app</h1>
-      <UserHeaderDisplayed :user="'Browsing as '+user"></UserHeaderDisplayed>
+      <UserHeaderDisplayed></UserHeaderDisplayed>
       
   </header>
 </template>

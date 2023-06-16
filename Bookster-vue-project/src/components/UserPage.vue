@@ -54,7 +54,7 @@ export default {
 
 <template>
     <header>
-        <MainHeader :username="userName"></MainHeader>
+        <MainHeader></MainHeader>
     </header>
 
         <SearchBarSection class="searchbar-section"></SearchBarSection>

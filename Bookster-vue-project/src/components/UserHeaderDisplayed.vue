@@ -8,9 +8,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 
-defineProps<{
-  user: string
-}>()
+const userName: string = localStorage.getItem('user') || 'No user found';
+
 function signOut(){
   localStorage.removeItem('token')
   localStorage.removeItem('user')
@@ -18,7 +17,7 @@ function signOut(){
 </script>
 <template>
     <header>
-        <h2 class="show-user">{{ user }}</h2>
+        <h2 class="show-user">{{ 'Browsing as '+ userName }}</h2>
 
         <router-link 
         to="/signin"
