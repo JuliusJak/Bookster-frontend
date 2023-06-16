@@ -28,17 +28,17 @@ export default {
     const bookTitles = ref([]);
     const bookAuthor = ref([]);
     const bookQuantity = ref([]);
+    const userName: string | null = localStorage.getItem('user');
 
-    const searchQuery = getSearchQuery(); // Get the search query ref
 
-    // Call the methods to fetch data whenever the search query changes
+    const searchQuery = getSearchQuery();
+
     watch(searchQuery, async (newQuery) => {
       bookTitles.value = await getBookTitles(newQuery);
       bookAuthor.value = await getBookAuthor(newQuery);
       bookQuantity.value = await getBookQuantity(newQuery);
     });
 
-    // Fetch initial data on component mount
     onMounted(async () => {
       const initialQuery = searchQuery.value;
       bookTitles.value = await getBookTitles(initialQuery);
@@ -50,6 +50,7 @@ export default {
       bookTitles,
       bookAuthor,
       bookQuantity,
+      userName,
     };
   },
 };
@@ -57,7 +58,7 @@ export default {
 
 <template>
     <header>
-      <MainHeader username="Admin"></MainHeader>
+      <MainHeader :username="userName"></MainHeader>
     </header>
     <SearchBarSection class="searchbar-section"></SearchBarSection>
     <div class="columns">

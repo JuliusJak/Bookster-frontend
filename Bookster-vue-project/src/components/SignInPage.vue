@@ -5,8 +5,6 @@
     ifall man inte har ett konto finns det en 
     länk till RegisterNewAccount.vue
     där man kan regestrera ett nytt konto
-
-
 -->
 
 
@@ -29,6 +27,7 @@ export default {
       };
       signIn(payload)
       this.$router.push('/admin/books');
+      localStorage.setItem('user', this.username)
   }
 }};
 </script>

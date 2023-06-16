@@ -10,10 +10,10 @@ import { defineProps, withDefaults } from 'vue';
 import UserHeaderDisplayed from '@/components/UserHeaderDisplayed.vue';
 
 const props = defineProps<{
-  username: string;
+  username: string | null;
 }>();
 
-const user: string = props.username;
+const user: string | null = props.username;
 </script>
 
 <template>

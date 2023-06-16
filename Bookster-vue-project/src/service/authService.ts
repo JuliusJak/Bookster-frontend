@@ -4,7 +4,6 @@ export async function signIn(payload:any) {
     axios
     .post('http://localhost:3000/auth/login', payload)
     .then(response => {
-      localStorage.clear
       console.log(response)
       const accessToken = response.data.accessToken;
 
