@@ -10,6 +10,6 @@ export function setSearchQuery(query:string): void {
   searchQuery.value = query;
 }
 
-export function getSearchQuery() {
+export function getSearchQuery(): Readonly<Ref<string>> {
   return readonly(searchQuery);
 }
