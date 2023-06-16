@@ -24,9 +24,9 @@ export default defineComponent({
       required: true,
     },
     content: {
-      type: String as PropType<string>,
+      type: Array as unknown as PropType<never[]>,
       required: true,
-    }
+    },
   },
   data() {
     return {
@@ -68,10 +68,10 @@ export default defineComponent({
       </div>
       <div v-for="(book, index) in books" :key="book.id" class="book-div">
         <template v-if="headTitle === 'Order'">
-            <Order></Order>
+            <Order :bookTitle="book.title" :bookQuantity="book.quantity" :bookAuthor="book.author"></Order>
         </template>
         <template v-if="headTitle === 'Action'">
-            <Action></Action>
+            <Action :bookId="index"></Action>
         </template>
         <div class="content-placeholder">
           <!-- Placeholder for the content -->
@@ -117,6 +117,8 @@ export default defineComponent({
 }
 .head-div h2 {
   margin: auto;
+  height: fit-content;
+
 }
 
 

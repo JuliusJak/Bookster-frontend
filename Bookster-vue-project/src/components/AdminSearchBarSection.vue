@@ -9,10 +9,26 @@
 -->
 
 <script setup lang="ts">
+import Popup from './Popup.vue'
+import { ref } from 'vue';
 
+const showPopup = ref(false);
+const currentBookId = ref<number>(0); // Initialize with a default value
+
+
+
+const openPopup = () => {
+  // Handle opening the popup for the specific book
+  showPopup.value = true;
+
+};
+
+const closePopup = () => {
+  showPopup.value = false;
+};
 </script>
 <template>
-<button class="add-book">Add New Book</button>
+<button class="add-book" @click="openPopup">Add New Book</button>
 
 <section class="view-switcher">
     <router-link
@@ -40,6 +56,7 @@
         </button>
     </router-link>
 </section>
+<Popup :current-book-id="currentBookId" v-if="showPopup" :show="showPopup" @close="closePopup" :mode="'add'" />
 
 </template>
 

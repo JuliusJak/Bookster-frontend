@@ -37,12 +37,15 @@ watch(inputValue, updateSearchQuery);
 
 <template>
   <body>
-    <input
-      type="text"
-      placeholder="Search query..."
-      v-model="inputValue"
-      @dblclick="clearSearch"
-    >
+    <div class="background-image">
+      <input
+        type="text"
+        placeholder="Search query..."
+        v-model="inputValue"
+        @dblclick="clearSearch"
+      >
+
+    </div>
     <template v-if="$route.path === '/admin/books' || $route.path ==='/admin/users'">
         <AdminSearchBarSection></AdminSearchBarSection>
       </template>
@@ -57,7 +60,14 @@ body{
     margin-top: 3%;
 }
 input{
+    background-image: url('../assets/magnifying-glass.png');
+    background-size: 12%;
+    background-repeat: no-repeat;
+    background-position: 2px;
+    opacity: 0.6; 
+
     padding: 10px;
+    padding-left: 50px;
     padding-right: 0;
     font-size: xx-large;
     border-radius: 5px;

@@ -18,9 +18,13 @@ import SearchBarSection from '@/components/SearchBarSection.vue';
     </header>
 
         <SearchBarSection class="searchbar-section"></SearchBarSection>
-        <div class="columns">
-
-        </div>
+    <div class="columns">
+        <columns :head-title="'Book Title'" :content="''"></columns>
+        <columns :head-title="'Book Author'" :content="''"></columns>
+        <columns :head-title="'Availability'" :content="''"></columns>
+        <columns :head-title="'Order'" :content="''"></columns>
+        <columns :head-title="'Action'" :content="''"></columns>
+    </div>
 
 </template>
 <style scoped>

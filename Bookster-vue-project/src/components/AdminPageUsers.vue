@@ -6,6 +6,7 @@
 <script setup lang="ts">
 import MainHeader from './MainHeader.vue';
 import SearchBarSection from './SearchBarSection.vue';
+import columns from './columns/columns.vue';
 
 
 </script>
@@ -16,7 +17,11 @@ import SearchBarSection from './SearchBarSection.vue';
     </header>
         <SearchBarSection class="searchbar-section"></SearchBarSection>
     <div class="columns">
-
+        <columns :head-title="'Book Title'" :content="''"></columns>
+        <columns :head-title="'Book Author'" :content="''"></columns>
+        <columns :head-title="'Availability'" :content="''"></columns>
+        <columns :head-title="'Order'" :content="''"></columns>
+        <columns :head-title="'Action'" :content="''"></columns>
     </div>
 
 </template>

@@ -7,54 +7,81 @@
     där man kan regestrera ett nytt konto
 
 -->
+
+
+
+<script lang="ts">
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    signIn() {
+      const payload = {
+        username: this.username,
+        password: this.password
+      };
+
+      axios
+        .post('http://localhost:3000/auth/login', payload)
+        .then(response => {
+          localStorage.clear
+          const accessToken = response.data.accessToken;
+
+          // Store the accessToken in local storage or Vuex store for future authenticated requests
+          localStorage.setItem('token', accessToken);
+
+          // Redirect the user to the desired page or perform any other necessary actions
+          this.$router.push('/admin/books'); // Redirect to /admin/books
+        })
+        .catch(error => {
+          console.error(error);
+          console.log('Authentication failed'); // Log error message to console
+        });
+    }
+  }
+};
+</script>
+
+
+
+
+
+
 <template>
     <div class="container">
-        <div class="login-symbol">
-            <p>Login</p>
-        </div>
-
-        <div>
-            <p class="username">Username</p>
-        </div>
-        <input type="text" class="username-input" placeholder="Type Your Username Here...">
-
-        <div>
-            <p class="password">Password</p>
-        </div>
-        <input type="text" class="password-input" placeholder="Type Your Password Here...">
-
-        <div>
-            <p class="no-account">
-                No account? sign-up <router-link :to="'/signup'">here!</router-link>
-            </p>
-        </div>
-        <router-link
-            to="/sign-in-as-{{ user }}"
-            custom
-            v-slot="{ navigate }">
-
-            <button
-                class="sign-in"
-                @click="navigate"
-                role="link">
-                Sign in
-            </button>
-        </router-link>
-        
-        <router-link
-            to="/guest"
-            custom
-            v-slot="{ navigate }">
-
-            <button
-                class="continue"
-                @click="navigate"
-                role="link">
-                Continue as guest user
-            </button>
-        </router-link>
+      <div class="login-symbol">
+        <p>Login</p>
+      </div>
+  
+      <div>
+        <p class="username">Username</p>
+      </div>
+      <input v-model="username" type="text" class="username-input" placeholder="Type Your Username Here..." />
+  
+      <div>
+        <p class="password">Password</p>
+      </div>
+      <input v-model="password" type="password" class="password-input" placeholder="Type Your Password Here..." />
+  
+      <div>
+        <p class="no-account">
+          No account? Sign up <router-link :to="'/signup'">here!</router-link>
+        </p>
+      </div>
+  
+      <button class="sign-in" @click="signIn" role="link">Sign in</button>
+  
+      <router-link to="/guest" custom v-slot="{ navigate }">
+        <button class="continue" @click="navigate" role="link">Continue as guest user</button>
+      </router-link>
     </div>
-</template>
+  </template>
 
 <style scoped>
 .container{

@@ -5,31 +5,64 @@
     länk till signInPage.vue där man kan logga
     in om man redan har ett konto
 -->
+<script lang="ts">
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    registerNewAccount() {
+      const payload = {
+        username: this.username,
+        password: this.password
+      };
+
+      axios
+        .post('http://localhost:3000/auth/register', payload)
+        .then(response => {
+          console.log('Registration successful'); // Log success message to console
+          // Perform any additional actions, such as redirecting to the login page
+          this.$router.push('/user'); // Redirect to /signin
+        })
+        .catch(error => {
+          console.error(error);
+          console.log('Registration failed'); // Log error message to console
+        });
+    }
+  }
+};
+</script>
+
 
 <template>
     <div class="container">
-        <div class="login-symbol">
-            <p>Register</p>
-        </div>
-
-        <div>
-            <p class="username">Username</p>
-        </div>
-        <input type="text" class="username-input" placeholder="Type Your Username Here...">
-
-        <div>
-            <p class="password">Password</p>
-        </div>
-        <input type="text" class="password-input" placeholder="Type Your Password Here...">
-
-        <div>
-            <p class="no-account">
-                Already have an account? sign-in <router-link :to="'/signin'">here!</router-link>
-            </p>
-        </div>
-        <button class="sign-up">Register new account</button>
+      <div class="login-symbol">
+        <p>Register</p>
+      </div>
+  
+      <div>
+        <p class="username">Username</p>
+      </div>
+      <input v-model="username" type="text" class="username-input" placeholder="Type Your Username Here..." />
+  
+      <div>
+        <p class="password">Password</p>
+      </div>
+      <input v-model="password" type="password" class="password-input" placeholder="Type Your Password Here..." />
+  
+      <div>
+        <p class="no-account">
+          Already have an account? Sign in <router-link :to="'/signin'">here!</router-link>
+        </p>
+      </div>
+      <button class="sign-up" @click="registerNewAccount">Register new account</button>
     </div>
-</template>
+  </template>
 
 <style scoped>
 .container{

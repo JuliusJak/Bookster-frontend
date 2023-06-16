@@ -6,7 +6,7 @@ import axios from 'axios';
 import { getSearchQuery } from '@/service/eventBus';
 
 
-export function searchBooks(query: any = '') {
+export function searchBooks(query: any = getSearchQuery) {
     return axios
     .get('http://localhost:3000/library/books/search?q='+query, {
         params: {
@@ -47,7 +47,6 @@ export function getBookTitles(string:string) {
     return searchBooks(string)
     .then((books) => {
         const titles:any = books.map((book:any) => book.title);
-        console.log(titles);
         return titles;
     })
     .catch((error) => {

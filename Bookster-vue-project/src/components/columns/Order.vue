@@ -2,13 +2,16 @@
   I order så väljer kan en admin eller 
   användare välja hur många exemplar av 
   en bok de vill beställa
+
+
+
 -->
 
 <script setup lang="ts">
 
-import { ref, watch } from 'vue';
+import { ref, watch, type Ref } from 'vue';
 
-let counter = ref(0);
+let counter: Ref<number> = ref(0);
 
 function add() {
   counter.value++;
@@ -19,23 +22,76 @@ function minus() {
     counter.value--;
   }
 }
+function reset() {
+  counter.value = 0;
+}
 
 watch(counter, (newValue) => {
-  console.log('Counter updated:', newValue);
+  //console.log('Counter updated:', newValue);
 });
+
+</script>
+<script lang="ts">
+export default {
+  props: {
+    bookTitle: {
+      type: String,
+      required: true,
+    },
+    bookAuthor: {
+      type: String,
+      required: true,
+    },
+    bookQuantity: {
+      type: Number,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      title: this.bookTitle,
+      author: this.bookAuthor,
+      quantity: this.bookQuantity,
+    };
+  },
+  methods: {
+    closePopup() {
+      this.$emit('close');
+    },
+    saveBook(ammount:number) {
+      const newBook = {
+        title: String(this.title),
+        author: String(this.author),
+        quantity: String(this.quantity),
+      };
+
+      // Get the existing books from localStorage
+      const existingBooks = localStorage.getItem('books');
+      let books = [];
+
+      if (existingBooks) {
+        books = JSON.parse(existingBooks);
+      }
+
+      for (let i = 0; i < ammount; i++) {
+        books.push(newBook);
+      }
+      
+      localStorage.setItem('books', JSON.stringify(books));
+
+      //localStorage.removeItem('books')
+    },
+  },
+};
 </script>
 
 <template>
-    <div class="order-container">
-
-        <button class="amount"
-        @click="minus">-</button>
-        <h2 class="counter"> {{ counter }} </h2>
-        <button class="amount"
-        @click="add">+</button>
-        <button class="order-button">Order</button>
-
-    </div>
+  <div class="order-container">
+    <button class="amount" @click="minus">-</button>
+    <h2 class="counter">{{ counter }}</h2>
+    <button class="amount" @click="add">+</button>
+    <button class="order-button" @mousedown="saveBook(counter)" @mouseup="reset">Order</button>
+  </div>
 </template>
 
 <style scoped>

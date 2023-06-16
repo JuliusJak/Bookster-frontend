@@ -24,7 +24,7 @@ defineProps<{
             <button class="sign-in-out" 
             @click="navigate"
             role="link"
-            >Sign-in
+            >Sign-out
         </button>
 
         </router-link> 
