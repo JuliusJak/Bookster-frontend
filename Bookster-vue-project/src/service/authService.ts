@@ -1,3 +1,4 @@
+import router from "@/router";
 import axios from "axios";
 
 export async function signIn(payload:any) {
@@ -11,7 +12,9 @@ export async function signIn(payload:any) {
     })
     .catch(error => {
       console.error(error);
-      console.log('Authentication failed'); // Log error message to console
+      console.log('Authentication failed');
+      router.push('/signin');
+      localStorage.removeItem('user')
     });
 }
 export async function registerNewUser(payload:any) {
@@ -23,6 +26,6 @@ export async function registerNewUser(payload:any) {
     })
     .catch(error => {
       console.error(error);
-      console.log('Registration failed'); // Log error message to console
+      console.log('Registration failed'); 
     });
 }

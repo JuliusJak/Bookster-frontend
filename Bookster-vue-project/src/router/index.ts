@@ -41,7 +41,7 @@ const router = createRouter({
       component: AdminPageUsers
     },
     {
-      path: '/user',
+      path: '/library/books',
       name: 'userpage',
       component: UserPage
     },

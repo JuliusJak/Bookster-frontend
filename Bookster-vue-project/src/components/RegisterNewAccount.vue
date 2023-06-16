@@ -25,7 +25,7 @@ export default {
         password: this.password
       };
       registerNewUser(payload)
-      this.$router.push('/user');
+      this.$router.push('/library/books');
 
   }
 }};

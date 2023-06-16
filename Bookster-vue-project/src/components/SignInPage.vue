@@ -11,6 +11,8 @@
 
 <script lang="ts">
 import { signIn } from '@/service/authService';
+import { getUsers } from '@/service/getUsersAPI';
+
 
 export default {
   data() {
@@ -26,7 +28,13 @@ export default {
         password: this.password
       };
       signIn(payload)
-      this.$router.push('/admin/books');
+      console.log(this.username)
+      if (this.username === 'Bob' || this.username === 'Greta'){
+        this.$router.push('/admin/books');
+      } 
+      else {
+        this.$router.push('/library/books');
+      }
       localStorage.setItem('user', this.username)
   }
 }};

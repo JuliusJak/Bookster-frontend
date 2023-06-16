@@ -7,21 +7,49 @@
     vad som finns
 -->
 
-<script setup lang="ts">
+<script lang="ts">
 import columns from './columns/columns.vue';
 import MainHeader from '../components/MainHeader.vue';
 import SearchBarSection from '@/components/SearchBarSection.vue';
-import { getBookTitles, getBooks, getBookAuthor, getBookQuantity } from '@/service/getBooksAPI';
+import AdminSearchBarSection from './AdminSearchBarSection.vue';
+import { getSearchQuery } from '@/service/eventBus';
+import { ref, watch, onMounted } from 'vue';
+import { getBookTitles, getBookAuthor, getBookQuantity } from '@/service/getBooksAPI';
 
+export default {
+  components: {
+    columns,
+    MainHeader,
+    SearchBarSection,
+    AdminSearchBarSection,
+  },
+  setup() {
+    const bookTitles = ref([]);
+    const bookAuthor = ref([]);
+    const bookQuantity = ref([]);
 
+    const searchQuery = getSearchQuery();
 
-</script>
-<script lang="ts">
+    watch(searchQuery, async (newQuery) => {
+      bookTitles.value = await getBookTitles(newQuery);
+      bookAuthor.value = await getBookAuthor(newQuery);
+      bookQuantity.value = await getBookQuantity(newQuery);
+    });
 
-const bookTitles = await getBookTitles('')
-const BookAuthor = await getBookAuthor('')
-const bookQuantity= await getBookQuantity('')
+    onMounted(async () => {
+      const initialQuery = searchQuery.value;
+      bookTitles.value = await getBookTitles(initialQuery);
+      bookAuthor.value = await getBookAuthor(initialQuery);
+      bookQuantity.value = await getBookQuantity(initialQuery);
+    });
 
+    return {
+      bookTitles,
+      bookAuthor,
+      bookQuantity,
+    };
+  },
+};
 </script>
 
 <template>
@@ -32,7 +60,7 @@ const bookQuantity= await getBookQuantity('')
     <SearchBarSection class="searchbar-section"></SearchBarSection>
     <div class="columns">
         <columns :head-title="'Book Title'" :content="bookTitles"></columns>
-        <columns :head-title="'Book Author'" :content="BookAuthor"></columns>
+        <columns :head-title="'Book Author'" :content="bookAuthor"></columns>
         <columns :head-title="'Availability'" :content="bookQuantity"></columns>
     </div>
 </template>

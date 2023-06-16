@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 const userName: string = localStorage.getItem('user') || 'No user found';
 
+
 function signOut(){
   localStorage.removeItem('token')
   localStorage.removeItem('user')
